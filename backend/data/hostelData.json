@@ -1,0 +1,34 @@
+{
+  "hostel": {
+    "name": "Hostel",
+    "location": "123 Adventure Lane, Travel City",
+    "rooms": [
+      {
+        "room_name": "Mixed Dormitory Room",
+        "availability": 10,
+        "description": "A shared dormitory room with 10 beds. Perfect for budget travelers looking to meet new people.",
+        "cost_per_night": 25,
+        "capacity": 10,
+        "type": "shared_dorm",
+        "image_url": [
+          "/images/hostel_dorm.jpg",
+          "/images/hostel_front_desk.jpg"
+        ],
+        "current_bookings": []
+      },
+      {
+        "room_name": "Semi-Private Room A",
+        "availability": 5,
+        "description": "A semi-private room with 2 beds, ideal for friends or couples who want a bit more privacy.",
+        "cost_per_night": 60,
+        "capacity": 2,
+        "type": "semi_private",
+        "image_url": [
+          "/images/hostel_semi_private.jpg",
+          "/images/hostel_front_desk.jpg"
+        ],
+        "current_bookings": []
+      }
+    ]
+  }
+}

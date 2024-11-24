@@ -1,18 +1,15 @@
-import React from "react";
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+import { Stack } from 'expo-router';
+import 'react-native-reanimated';
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import "../global.css";
 
-const RootLayout = () => {
+export default function RootLayout() {
   return (
-    <>
-      <StatusBar style="auto" />
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="profile" options={{ headerShown: true }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
       </Stack>
-    </>
+      </GestureHandlerRootView>
   );
-};
-
-export default RootLayout;
+}
