@@ -24,6 +24,9 @@ export default function RootLayout() {
           options={{
             title: "Home",
             headerShown: false,
+                      headerStyle: {
+            backgroundColor: '#1E90FF', // Change this to your desired color
+          },
             tabBarIcon: ({ color }: { color: string }) => (
               <FontAwesome5 name="home" color={color} size={28} />
             ),
