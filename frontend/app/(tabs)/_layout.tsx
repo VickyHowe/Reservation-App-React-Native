@@ -33,7 +33,7 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="CreateReservations"
+          name="createReservations"
           options={{
             title: "New Reservation",
             headerShown: false,
@@ -46,6 +46,16 @@ export default function RootLayout() {
           name="profile"
           options={{
             title: "Profile",
+            headerShown: false,
+            tabBarIcon: ({ color }: { color: string }) => (
+              <AntDesign name="profile" color={color} size={28} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="reservations"
+          options={{
+            title: "Reservations",
             headerShown: false,
             tabBarIcon: ({ color }: { color: string }) => (
               <AntDesign name="profile" color={color} size={28} />

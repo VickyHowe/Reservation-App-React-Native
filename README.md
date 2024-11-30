@@ -74,6 +74,14 @@ Ensure the `package.json` is setup to use the same port you setup in your `backe
 "proxy" : "http://localhost:5000/"
 ```
 
+For Android emulators, use http://10.0.2.2:5000/ to access your local server.
+For iOS simulators, you can use http://localhost:5000/.
+For physical devices, use your machine's local IP address (e.g., http://192.168.1.100:5000/).
+
+.env frontend
+API_URL=<replace with IP address>:5000
+
+
 # References
 
 https://www.youtube.com/watch?v=ZBCUegTZF7M
