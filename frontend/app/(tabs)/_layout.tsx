@@ -15,8 +15,7 @@ export default function RootLayout() {
             borderTopWidth: 1,
             borderTopColor: "gray",
             height: 64,
-            },
-          
+            },          
         }}
       >
         <Tabs.Screen

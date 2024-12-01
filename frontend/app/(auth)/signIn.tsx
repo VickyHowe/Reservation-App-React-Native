@@ -1,8 +1,12 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "../../components/FormField";
 import { Link } from "expo-router";
+import { API_URL } from "@env";
+import { useRouter } from 'expo-router';
+import axios from "axios";
+
 
 const SignIn: React.FC = () => {
   const [form, setForm] = useState({
@@ -12,9 +16,22 @@ const SignIn: React.FC = () => {
 
   const [isSubmitting, setisSubmitting] = useState(false);
 
-  const submit = () => {
-    console.log(form);  // debugging remove for production
-  };
+  const submit = async () => {
+    setisSubmitting(true);
+    try {
+        const response = await axios.post(`${API_URL}/api/users/login`, form);
+        Alert.alert("Login Successful", response.data.message);
+
+    } catch (error) {
+        if (error instanceof Error) {
+            Alert.alert("Login Error", error.message);
+        } else {
+            Alert.alert("Login Error", "An unknown error occurred");
+        }
+    } finally {
+        setisSubmitting(false);
+    }
+};
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -28,7 +45,7 @@ const SignIn: React.FC = () => {
             value={form.email}
             handleChangeText={(e) => setForm({ ...form, email: e })}
             otherStyles="mt-7"
-            // keyBoardType="email-address"
+
           />
           <FormField
             title="Password"

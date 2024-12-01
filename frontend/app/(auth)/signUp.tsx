@@ -1,21 +1,42 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "../../components/FormField";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import axios from "axios";
+import { API_URL } from "@env";
+
 
 const SignUp: React.FC = () => {
   const [form, setForm] = useState({
-    username:"",
+    username: "",
     email: "",
     password: "",
   });
 
   const [isSubmitting, setisSubmitting] = useState(false);
+  const router = useRouter();
 
-  const submit = () => {
-    console.log(form);  // debugging remove for production
-    
+  const submit = async () => {
+    setisSubmitting(true);
+    // console.log("Submitting form:", form);
+    try {
+      const response = await axios.post(`${API_URL}/api/users/register`, form);
+      Alert.alert("Registration Successful", response.data.message);
+      router.push('/reservations');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Error response data:", error.response?.data);
+        Alert.alert(
+          "Registration Error",
+          error.response?.data?.message || error.message
+        );
+      } else {
+        Alert.alert("Registration Error", "An unknown error occurred");
+      }
+    } finally {
+      setisSubmitting(false);
+    }
   };
 
   return (
@@ -49,7 +70,7 @@ const SignUp: React.FC = () => {
             disabled={isSubmitting}
           >
             <Text className="text-secondary text-center font-bold text-2xl ">
-              Sign In
+              Sign Up
             </Text>
           </TouchableOpacity>
 

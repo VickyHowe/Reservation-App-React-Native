@@ -13,8 +13,12 @@ const router = express.Router();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
 
+/**
+ * Middleware
+ */
+app.use(cors());
+app.use(express.json());
 
 /**
  * Connect to Database
@@ -33,3 +37,5 @@ app.listen(port, () => console.log(`server running on port ${port}`));
  * Routes
  */
 app.use("/api/rooms", require("./routes/roomsRoute"));
+app.use("/api/users", require("./routes/userRoute"));
+app.use("/api/reservations", require("./routes/reservationsRoute"));
